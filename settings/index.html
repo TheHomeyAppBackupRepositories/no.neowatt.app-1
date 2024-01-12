@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <!-- The '/homey.js' script must be included in your settings view to work -->
+  <script type="text/javascript" src="/homey.js" data-origin="settings"></script>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body class="m-0 p-0">
+  <iframe id="neowatt" frameborder="0" scrolling="no"></iframe>
+
+  <script type="text/javascript">
+
+    // Settings View API
+    // https://apps.developer.homey.app/advanced/custom-views/app-settings#settings-view-api
+    // Some nice methods to use there.
+
+
+
+    function onHomeyReady(Homey) {
+
+      Homey.get("username", function (err, username) {
+          if (err) return Homey.alert(err);
+
+          //Homey.alert("Hello " + username + "!");
+
+          const iframe = document.getElementById('neowatt');
+
+          //iframe.src = `https://app.neowatt.no/${username}`;
+          iframe.src = `https://app.neowatt.no/gatewayinfo/homey`;
+
+          Homey.ready();
+      });
+
+      // Web API
+      // This is not available in Homey Cloud... :(
+      // make a POST call to /api/app/com.your.app/
+      Homey.api("POST", "/", { foo: "bar", homey: Homey }, function (err, result) {
+        if (err) return Homey.alert(err);
+      });
+
+
+    }
+  </script>
+</body>
+</html>

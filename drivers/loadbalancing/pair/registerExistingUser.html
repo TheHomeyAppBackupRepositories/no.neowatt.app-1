@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+	<head></head>
+  <body>
+
+  <form class="homey-form">
+    <fieldset class="homey-form-fieldset">
+      <!-- <legend class="homey-form-legend">Login data</legend> -->
+
+      <div class="homey-form-group">
+        <label class="homey-form-label" for="existinguseremail">Email</label>
+        <input class="homey-form-input" id="existinguseremail" type="text"/>
+      </div>
+
+      <div class="homey-form-group">
+        <label class="homey-form-label" for="existinguserpassword">Password</label>
+        <input class="homey-form-input" id="existinguserpassword" type="password"/>
+      </div>
+
+      <button id="loginExisting" class="homey-button-primary-full">Add Homey to existing NeoWatt account</button>
+
+    </fieldset>
+  </form>
+
+  <script type="text/javascript">
+
+    /**
+     * Inspiration:
+     * 
+     * https://github.com/crownstone/crownstone-homey/blob/master/drivers/crownstone/device.ts
+     * 
+     * 
+     */
+    Homey.setTitle("Login");
+    Homey.setSubtitle("Login with your existing NeoWatt account and we'll add your Homey to it");
+
+    // Get the create button
+    const loginExisting = document.getElementById('loginExisting');
+
+    // Add a click event listener to the loginExisting button
+    loginExisting.addEventListener('click', function (event) {
+
+        event.preventDefault();
+
+        // Gotcha: The IDs must be unique, so we can't use the same IDs as in register.html
+        const { value: email = "" } = document.getElementById('existinguseremail');
+        const { value: password = "" } = document.getElementById('existinguserpassword');
+
+        if (email === "" || password === "") {
+          return Homey.alert("Please fill in your email and password");
+        }
+
+        /* Homey.emit("create", { foo: "bar" }).then(function (result) {
+          //console.log(result); // result is: Hello!
+          Homey.alert(result)
+        }); */
+
+        Homey.emit("addHomeyToExistingUser", { email: email, password: password }).then(function (result) {
+          // result from the driver
+          // console.log(result); 
+          // Homey.alert(result)
+
+          if (result.success === true) {
+            // Account created successfully
+            Homey.alert("Homey successfully added to your existing NeoWatt account.")
+            Homey.showView("login_credentials");
+          } else {
+            // Account creation failed. Message is in result.reason
+            Homey.alert("Something went wrong: " + result.reason)
+          }
+        });
+
+    });
+
+  </script>
+
+  </body>
+</html>

@@ -1,0 +1,19 @@
+{
+  "name": "no.neowatt.app",
+  "version": "1.0.0",
+  "main": "app.js",
+  "scripts": {
+    "lint": "eslint --ext .js,.ts --ignore-path .gitignore ."
+  },
+  "devDependencies": {
+    "@tsconfig/node16": "^16.1.1",
+    "@types/homey": "npm:homey-apps-sdk-v3-types@^0.3.5",
+    "@types/node": "^20.8.2",
+    "eslint": "^7.32.0",
+    "eslint-config-athom": "^3.1.1"
+  },
+  "dependencies": {
+    "homey-log": "^2.1.0",
+    "node-fetch": "^2.7.0"
+  }
+}

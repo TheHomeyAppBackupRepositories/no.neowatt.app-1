@@ -1,0 +1,26 @@
+html, body {
+    margin: 0;
+    padding: 0;
+    height: 100vh; /* dette sikrer at kroppen er like høy som visningsporten */
+    width: 100%; /* sikrer at kroppen dekker hele bredden */
+    display: flex; /* gjør kroppen til en flex-container */
+    flex-direction: column; /* organiserer innholdet vertikalt */
+}
+  
+iframe {
+    flex-grow: 1; /* tillater at iframe vokser og fyller ekstra plass */
+    width: 100%; /* sikrer at iframe dekker hele bredden */
+    border: none; /* fjerner standardrammen fra iframe */
+    overflow: hidden; /* skjuler rullefeltene, om noen */
+}
+
+  /* Løst av ChatGPT 4 17 okt 23 */
+  /* https://chat.openai.com/share/930f9f0e-5875-4df6-bc59-7f8853718141 */
+
+.m-0 {
+    margin: 0px !important;
+}
+
+.p-0 {
+    padding: 0px !important;
+}
