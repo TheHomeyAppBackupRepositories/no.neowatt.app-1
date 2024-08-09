@@ -1,7 +1,7 @@
 {
   "_comment": "This file is generated. Please edit .homeycompose/app.json instead.",
   "id": "no.neowatt.app",
-  "version": "1.0.29",
+  "version": "1.0.35",
   "author": {
     "name": "NeoWatt AS"
   },
@@ -11,14 +11,13 @@
   "sdk": 3,
   "brandColor": "#6E2EE7",
   "platforms": [
-    "local",
-    "cloud"
+    "local"
   ],
   "name": {
     "en": "NeoWatt"
   },
   "description": {
-    "en": "Automatically lower your energy costs. Install, set and forget."
+    "en": "Automatically lower your energy costs and receive passive income"
   },
   "category": [
     "energy"
@@ -135,8 +134,7 @@
         }
       },
       "platforms": [
-        "local",
-        "cloud"
+        "local"
       ],
       "connectivity": [
         "cloud"
